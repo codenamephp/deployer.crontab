@@ -1,8 +1,6 @@
-name: Prepare Release
+name: Update Changelog
 on:
   merge_group:
-    types:
-      - checks_requested
 
 jobs:
   calculate_next_version:
