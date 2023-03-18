@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/deployer.crontab.iml" filepath="$PROJECT_DIR$/.idea/deployer.crontab.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../deployer.npm/.idea/deployer.npm.iml" filepath="$PROJECT_DIR$/../deployer.npm/.idea/deployer.npm.iml" />
     </modules>
   </component>
 </project>
