@@ -1,7 +1,11 @@
 name: Update Changelog
 on:
   merge_group:
-
+  pull_request:
+    branches:
+      - release
+    paths-ignore:
+      - '**.md'
 jobs:
   calculate_next_version:
     uses: codenamephp/workflows.common/.github/workflows/calculate-next-version.yml@1
