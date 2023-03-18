@@ -3,10 +3,6 @@ name: CI
 
 on:
   merge_group:
-    types:
-      - checks_requested
-    paths-ignore:
-      - '**.md'
   push:
     branches:
       - main
