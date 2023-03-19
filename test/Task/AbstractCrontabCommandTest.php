@@ -1,7 +1,23 @@
 <?php declare(strict_types=1);
+/*
+ *   Copyright 2023 Bastian Schwarz <bastian@codename-php.de>.
+ *
+ *   Licensed under the Apache License, Version 2.0 (the "License");
+ *   you may not use this file except in compliance with the License.
+ *   You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *   Unless required by applicable law or agreed to in writing, software
+ *   distributed under the License is distributed on an "AS IS" BASIS,
+ *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *   See the License for the specific language governing permissions and
+ *   limitations under the License.
+ */
 
 namespace de\codenamephp\deployer\crontab\test\Task;
 
+use de\codenamephp\deployer\base\functions\iWriteln;
 use de\codenamephp\deployer\command\iCommand;
 use de\codenamephp\deployer\command\runner\iRunner;
 use de\codenamephp\deployer\command\runner\WithDeployerFunctions;
@@ -9,6 +25,7 @@ use de\codenamephp\deployer\crontab\Command\CrontabCommandFactoryInterface;
 use de\codenamephp\deployer\crontab\Command\WithBinaryFromDeployer;
 use de\codenamephp\deployer\crontab\Task\AbstractCrontabCommand;
 use de\codenamephp\deployer\crontab\Task\HasOptionsInterface;
+use de\codenamephp\deployer\crontab\Task\HasOutputInteface;
 use Mockery;
 use PHPUnit\Framework\TestCase;
 
@@ -56,7 +73,6 @@ final class AbstractCrontabCommandTest extends TestCase {
   }
 
   public function test__invoke() : void {
-    $user = 'some user';
     $command = $this->createMock(iCommand::class);
 
     $crontabCommandFactory = $this->createMock(CrontabCommandFactoryInterface::class);
@@ -65,7 +81,21 @@ final class AbstractCrontabCommandTest extends TestCase {
     $commandRunner = $this->createMock(iRunner::class);
     $commandRunner->expects(self::once())->method('run')->with($command);
 
-    $sut = $this->getMockForAbstractClass(AbstractCrontabCommand::class, [$user, $crontabCommandFactory, $commandRunner]);
+    $writeln = $this->createMock(iWriteln::class);
+    $writeln->expects(self::never())->method('writeln');
+
+    $sut = $this->getMockForAbstractClass(AbstractCrontabCommand::class, ['some user', $crontabCommandFactory, $commandRunner, $writeln]);
+    $sut->__invoke();
+  }
+
+  public function test__invoke_canOutput() : void {
+    $commandRunner = $this->createMock(iRunner::class);
+    $commandRunner->expects(self::once())->method('run')->willReturn('some output');
+
+    $writeln = $this->createMock(iWriteln::class);
+    $writeln->expects(self::once())->method('writeln')->with(PHP_EOL . 'some output');
+
+    $sut = Mockery::mock(AbstractCrontabCommand::class, HasOutputInteface::class, ['some user', $this->createMock(CrontabCommandFactoryInterface::class), $commandRunner, $writeln])->makePartial();
     $sut->__invoke();
   }
 }
