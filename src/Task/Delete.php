@@ -10,7 +10,7 @@ use de\codenamephp\deployer\base\task\iTaskWithName;
  *
  * @psalm-api
  */
-final class Delete extends AbstractCrontabCommand implements iTaskWithName, iTaskWithDescription {
+final class Delete extends AbstractCrontabCommand implements iTaskWithName, iTaskWithDescription, HasOptionsInterface {
 
   public const NAME = 'crontab:delete';
 

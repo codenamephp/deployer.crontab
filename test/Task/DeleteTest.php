@@ -2,6 +2,8 @@
 
 namespace de\codenamephp\deployer\crontab\test\Task;
 
+use de\codenamephp\deployer\command\runner\iRunner;
+use de\codenamephp\deployer\crontab\Command\CrontabCommandFactoryInterface;
 use de\codenamephp\deployer\crontab\Task\Delete;
 use PHPUnit\Framework\TestCase;
 
@@ -17,5 +19,12 @@ final class DeleteTest extends TestCase {
 
   public function testGetOptions() : void {
     self::assertSame(['-r'], (new Delete())->getOptions());
+  }
+
+  public function test__invoke() : void {
+    $crontabCommandFactory = $this->createMock(CrontabCommandFactoryInterface::class);
+    $crontabCommandFactory->expects(self::once())->method('build')->with(['-r']);
+
+    (new Delete(crontabCommandFactory: $crontabCommandFactory, commandRunner: $this->createMock(iRunner::class)))->__invoke();
   }
 }
