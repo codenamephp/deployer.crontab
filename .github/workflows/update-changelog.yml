@@ -35,11 +35,15 @@ jobs:
           branch: changelog
           delete-branch: true
           title: '[CHANGELOG] Update changelog'
+          labels: changelog
 
 
       - name: Merge pull request
-        uses: KeisukeYamashita/auto-pull-request-merge@v1
+        uses: squalrus/merge-bot@v0.4.5
         with:
-          pullRequestNumber: ${{ steps.cpr.outputs.pull-request-number }}
-          intervalSeconds: 5
-          checkStatus: false
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          test: true
+          reviewers: true
+          labels: changelog
+          checks_enabled: true
+          delete_source_branch: true
