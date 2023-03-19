@@ -42,3 +42,4 @@ jobs:
         with:
           pullRequestNumber: ${{ steps.cpr.outputs.pull-request-number }}
           intervalSeconds: 5
+          checkStatus: false
