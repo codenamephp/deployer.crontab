@@ -1,11 +1,17 @@
 # Changelog
 
-## [Unreleased](https://github.com/codenamephp/deployer.crontab/tree/HEAD)
+## [1.0.0](https://github.com/codenamephp/deployer.crontab/tree/1.0.0) (2023-03-19)
 
-[Full Changelog](https://github.com/codenamephp/deployer.crontab/compare/468349d220343c6522bd05f80b6e1054563c9571...HEAD)
+[Full Changelog](https://github.com/codenamephp/deployer.crontab/compare/468349d220343c6522bd05f80b6e1054563c9571...1.0.0)
 
 **Merged pull requests:**
 
+- Try different action [\#11](https://github.com/codenamephp/deployer.crontab/pull/11) ([bastianschwarz](https://github.com/bastianschwarz))
+- Do not check status before merge [\#10](https://github.com/codenamephp/deployer.crontab/pull/10) ([bastianschwarz](https://github.com/bastianschwarz))
+- Testing a new workflow that opens and merges a pr [\#8](https://github.com/codenamephp/deployer.crontab/pull/8) ([bastianschwarz](https://github.com/bastianschwarz))
+- Update update-changelog.yml [\#7](https://github.com/codenamephp/deployer.crontab/pull/7) ([bastianschwarz](https://github.com/bastianschwarz))
+- Update update-changelog.yml [\#6](https://github.com/codenamephp/deployer.crontab/pull/6) ([bastianschwarz](https://github.com/bastianschwarz))
+- not sure what the problem is [\#5](https://github.com/codenamephp/deployer.crontab/pull/5) ([bastianschwarz](https://github.com/bastianschwarz))
 - Playing around with merge queue [\#4](https://github.com/codenamephp/deployer.crontab/pull/4) ([bastianschwarz](https://github.com/bastianschwarz))
 - Fixed workflow name [\#3](https://github.com/codenamephp/deployer.crontab/pull/3) ([bastianschwarz](https://github.com/bastianschwarz))
 - Implemented command [\#2](https://github.com/codenamephp/deployer.crontab/pull/2) ([bastianschwarz](https://github.com/bastianschwarz))
