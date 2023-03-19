@@ -12,4 +12,4 @@ jobs:
     with:
       ref: ${{github.head_ref}}
       future-release: ${{ needs.calculate_next_version.outputs.version }}
-      release-branch: 'release'
+      release-branch: ${{github.head_ref}}
