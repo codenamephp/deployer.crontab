@@ -22,6 +22,11 @@ abstract class AbstractCrontabCommand implements iTask {
     public readonly iRunner $commandRunner = new WithDeployerFunctions()
   ) {}
 
+  /**
+   * Checks for the HasOptionsInterface and if it's implemented the return value is used as base. Then adds the user option if it is set.
+   *
+   * @return array<int, string> The options to pass to the crontab command
+   */
   final public function getOptionsWithUser() : array {
     $options = $this instanceof HasOptionsInterface ? $this->getOptions() : [];
     !$this->user ?: $options[] = "-u $this->user";
