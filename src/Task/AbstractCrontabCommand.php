@@ -47,7 +47,7 @@ abstract class AbstractCrontabCommand implements iTask {
    */
   final public function getOptionsWithUser() : array {
     $options = $this instanceof HasOptionsInterface ? $this->getOptions() : [];
-    !$this->user ?: $options[] = "-u $this->user";
+    (string) $this->user !== ''  && $options[] = "-u $this->user";
     return $options;
   }
 
